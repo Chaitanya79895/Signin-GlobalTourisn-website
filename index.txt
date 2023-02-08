@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <script>
+      function AddRow()
+    {
+      var usernamee = document.getElementById("usernamee").value;
+      var passwordd = document.getElementById("passwordd").value;
+      var email = document.getElementById("email").value;
+      var phone = document.getElementById("phone").value;
+      if (usernamee==""|| passwordd==""|| email==""|| phone=="") {
+        return false;
+      }
+      else {
+      google.script.run.AddRecord(usernamee,passwordd,email,phone);
+      document.getElementById("page2_id1").className = "page2_id1-off";
+      document.getElementById("page3_id1").className = "page3_id1";
+     }
+    }
+
+     function LoginUser()
+    {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    google.script.run.withSuccessHandler(function(output) 
+    {
+      if(output == 'TRUE')
+      {
+         var url1 ='http://www.google.com';
+         var winRef = window.open(url1);
+         winRef ? google.script.host.close() : window.onload=function(){document.getElementById('url').href = url1;}    
+      }
+      else if(output == 'FALSE')
+      {
+        document.getElementById("errorMessage").innerHTML = "Invalid data";     
+      }    
+    }).checkLogin(username, password);
+    }
+    
+function function1(){
+    document.getElementById("page1_id1").className = "page1_class1-off";
+    document.getElementById("page2_id1").className = "page2_id1";
+}
+ 
+function function3(){ 
+  document.getElementById("page3_id1").className = "page3_id1-off";
+  document.getElementById("page1_id1").className = "page1_id1"; 
+}
+
+  </script>
+  <style>
+
+/*page1*/
+.page1_class1-off{
+    display: none;
+  }
+
+
+/*page2*/
+.page2_class1{
+    display: none;
+  }
+
+.page2_id1-off{
+    display:none;
+}
+
+/*page3*/
+.page3_class1{
+    display:none;
+
+}
+.page3_id1-off{
+    display:none;
+}
+
+
+input[type=text]:hover{
+        border-bottom:2px solid black;
+      }
+input[type=number]:hover{
+        border-bottom:2px solid black;
+      }
+input[type=password]:hover{
+        border-bottom:2px solid black;
+      }
+
+
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+   <style>
+      body {
+    width: 95%;
+    background: linear-gradient(to top, rgba(0,0,0,0.5)100%,rgba(0,0,0,0.5)100%), url(https://static.businessworld.in/article/article_extra_large_image/1587722852_0pILuE_travel.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+      }
+    </style>
+  <body>
+    <div class="main">
+            <div class="icon" style="width: 200px;float: left;height: 70px;">
+                <h2 class="logo" style="color: rgb(135, 206, 235);
+    font-size: 50px;
+    font-family: Times New Roman;
+    padding-left: 20px;
+    float: left;
+    padding-top: 10px;
+    margin-top: 5px
+">GLOBAL TOURISM</h2>
+            </div>
+
+        </div> 
+        <br><br>
+        <br><br>
+        <br><br>
+        <div class="content" style=" width: 1200px;
+    height: auto;
+    margin: auto;
+    color: #fff;
+    position: relative;
+">
+            <h1 style="color: skyblue; font-family: 'Times New Roman';
+    font-size: 50px;
+    padding-left: 20px;
+    margin-top: 9%;
+    letter-spacing: 2px;
+">EXPLORE THE<br><span style="color: white;font-size: 65px
+">WORLD</span></h1><br>
+            <h2><p style=" padding-left: 20px;
+    padding-bottom: 25px;
+    font-family: Arial;
+    letter-spacing: 1.2px;
+    line-height: 30px;
+">“See the world.<br>
+ It's more fantastic than any dream made or paid for in factories.<br>
+  Ask for no guarantees,<br>
+  Ask for no security.”<br></p></h2>
+            <br><br>
+  </div>
+    <br><br>
+<!--page1-->
+<center>
+ <div class="page1_class1" id="page1_id1" style="position: absolute;top: 50%;right: 0%;transform: translate(-50%, -50%);background:rgba(0,0,0,0.5)70%;border:4px solid black;border-radius: 40px;width: 275px;padding-top: 10px;padding-bottom: 20px;padding-left: 20px;padding-right: 20px;">
+ <h1 style="color:red;">Sign In</h1> 
+    <br>
+    <input type="text" id="username" placeholder="Username" style="border-top: none;border-right: none;border-left: none;outline: none; text-align: center;font-size:0.9em ;width: 50%;font-weight:bold;"/><br>
+    <br>
+    <input type="password" id="password" placeholder="Password" style="border-top: none;border-right: none;border-left: none;outline: none; text-align: center;font-size:0.9em ;width: 50%;font-weight:bold;"/>
+    <br><span id="errorMessage" style="color: red" ></span><br>
+    <input type="submit" value="Login" onclick="LoginUser()"  style="float: center;padding-top: 1px;padding-bottom: 1px;padding-left: 10px;padding-right: 10px;font-size: 0.9em;font-weight:bold;" /><br>
+    <br>
+    <b style="color: red">Don't Have An Account</b><br>
+    <input type="button" onClick="function1()" value="Create New Account" style="margin-top: 5px;font-weight:bold;" />
+ </div>
+
+<!--page2-->
+<div class="page2_class1" id="page2_id1" style="position: absolute;top: 50%;right: 0%;transform: translate(-50%, -50%);background:rgba(0,0,0,0.5)70%;border:4px solid black;border-radius: 40px;width: 275px;padding-top: 10px;padding-bottom: 20px;padding-left: 20px;padding-right: 20px;">
+ <h1 style="color:red;">Sign Up</h1>
+    <input type="text" id="usernamee" placeholder="Name" style="border-top: none;border-right: none;border-left: none;outline: none; text-align: center;font-size:0.9em ;width: 50%;font-weight:bold;"/><br>
+    <br>
+    <input type="password" id="passwordd" placeholder="Create password" style="border-top: none;border-right: none;border-left: none;outline: none; text-align: center;font-size: 0.9;width: 50%;font-weight:bold;" /><br>
+        <br>
+    <input type="text" id="email" placeholder="Email" style="border-top: none;border-right: none;border-left: none;outline: none; text-align: center;font-size:0.9em ;width: 50%;font-weight:bold;"/><br>
+    <br>
+    <input type="number" id="phone" placeholder="Phone no." style="border-top: none;border-right: none;border-left: none;outline: none; text-align: center;font-size:0.9em ;width: 50%;font-weight:bold;" /><br><br>
+    <b style="color:red;">Password must contain letters and numbers. It will not work without letters and numbers.</b><br><br>
+    <input type="submit" value="Create" onclick="AddRow()" style="float: center;padding-top: 1px;padding-bottom: 1px;padding-left: 10px;padding-right: 10px;font-size: 0.9em;font-weight:bold;" />
+    <br>
+</div>
+
+<!--page3-->
+ <div class="page3_class1" id="page3_id1" style="background:none;border:2px solid gray;border-radius: 20px;width: 250px;padding-top: 10px;padding-bottom: 20px;padding-left: 20px;padding-right: 20px;"><center>
+    <h2> Your account has been successfully created. Login to your account</h2>
+    <input type="submit"  onClick="function3()" value="Login" style="font-weight:bold;"><br>
+ </div> 
+
+
+</center>
+ </body>
+</html>
